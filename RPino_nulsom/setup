@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#
+# avrdude original file name : /usr/bin/avrdude.org is backup file
+#
+sudo cp /usr/bin/avrdude /usr/bin/avrdude.org
+sudo cp autoreset /usr/bin
+sudo cp avrdude-autoreset /usr/bin
+sudo mv /usr/bin/avrdude /usr/bin/avrdude-original
+sudo ln -s /usr/bin/avrdude-autoreset /usr/bin/avrdude
+
+#
+# rules.d add to rpino daemon file
+#
+sudo cp 80-rpino.rules /etc/udev/rules.d
+
+#
+# cmdline.txt original file name : /boot/cmdline.txt.org
+#
+sudo mv /boot/cmdline.txt /boot/cmdline.txt.org
+sudo cp cmdline.txt /boot
+
+# 
+# inittab original filename : /etc/inittab.org
+#
+sudo mv /etc/inittab /etc/inittab.org
+sudo cp inittab /etc
+
+sudo chmod a+x /usr/bin/avrdude-autoreset
+sudo chmod a+x /usr/bin/autoreset
+
+echo "[ 100% ] Rpino Setup Complite!"
+echo "[ >>>> ] You Shulde be Rpi Restart!"
+
+#
+# Arduino sketch boardfile make
+#
+sudo mv /usr/share/arduino/hardware/arduino/boards.txt /usr/share/arduino/hardware/arduino/boards.txt.org
+sudo cp boards.txt /usr/share/arduino/hardware/arduino
+
+

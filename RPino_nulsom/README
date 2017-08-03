@@ -1,0 +1,17 @@
+##############################################
+# Make date : 2013.07.06
+# Revision  : v0.1
+# Make by   : NULSOM INC.
+##############################################
+
+1. sudo apt-get update
+2. sudo apt-get install arduino
+
+3. ./setup
+4. Rpi Restart
+
+5. restart after run startx
+6. LXTerminal run
+7. arduino typing
+
+
