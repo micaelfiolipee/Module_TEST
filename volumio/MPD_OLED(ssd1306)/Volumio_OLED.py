@@ -105,10 +105,7 @@ class MPDPoller(object):
 
             if stats['state'] == 'stop':
                 return(None)
-#            print(stats)
-#            print(song)
             if 'artist' not in song:
-#                artist = ""
                 artist = song['name']
             else:
                 artist = song['artist']
@@ -160,10 +157,6 @@ class MPDPoller(object):
                 raise PollerError("Couldn't retrieve current song: %s" % e)
 
         # Hurray!  We got the current song without any errors!
-#        print(song)
-#        print(songplayed)
-#        print(song_info)
-#        print(audio)
         eltime = "%d:%02d:%02d" % (h, m, s)
         return({'artist':artist, 'title':title, 'eltime':eltime, 'volume':int(vol), 'song_info':song_info})
 
@@ -215,10 +208,6 @@ def main():
         eltime = status['eltime']
         vol = status['volume']
         song_info = status['song_info']
-#        print artist
-#        print title
-#        print eltime
-#        print vol
         div_vol = vol // 10
         vol_str = ""
         for i in range(div_vol):
@@ -241,8 +230,6 @@ def main():
             draw.text((0, top), unicode(artist).center(24,' '), font=font_art, fill=255)
             draw.text((0, top+13), title[0:16], font=font_tit, fill=255)
             draw.text((0, top+27), title[16:32], font=font_tit, fill=255)
-#            draw.text((0, top+41), eltime, font=font_info, fill=255)
-#            draw.text((86, top+41),"Vol " +  str(vol) , font=font_info, fill=255)
             draw.text((0, top+41), song_info, font=font_info, fill=255)
 
         else:
@@ -251,12 +238,10 @@ def main():
             draw.text((0, top+30), eltime, font=font_info, fill=255)
             draw.text((86, top+30),"Vol " +  str(vol) , font=font_info, fill=255)
             draw.text((0, top+45), song_info, font=font_info, fill=255)
-#        draw.text((0, top+45), vol_str, font=font_tm, fill=255)
 
         disp.image(image)
         disp.display()
         sleep(1)
-
 
 if __name__ == "__main__":
     import sys
